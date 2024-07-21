@@ -1,0 +1,30 @@
+@model mvccrudf.Models.skill
+
+@{
+    ViewData["Title"] = "addskill";
+}
+
+<h1>addskill</h1>
+
+<h4>skill</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <p style="color:green;">@ViewBag.success</p>
+        <form asp-action="addskill">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="skillname" class="control-label"></label>
+                <input asp-for="skillname" class="form-control" />
+                <span asp-validation-for="skillname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary"
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
