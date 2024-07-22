@@ -135,3 +135,4 @@
 /Users/home/Desktop/mvccrudf/obj/Debug/net8.0/mvccrudf.pdb
 /Users/home/Desktop/mvccrudf/obj/Debug/net8.0/mvccrudf.genruntimeconfig.cache
 /Users/home/Desktop/mvccrudf/obj/Debug/net8.0/ref/mvccrudf.dll
+/Users/home/Desktop/mvccrudf/obj/Debug/net8.0/mvccrudf.sourcelink.json

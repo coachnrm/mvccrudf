@@ -1,0 +1,31 @@
+@model mvccrudf.Models.updatestudentviewmodel
+
+@{
+}
+
+<h4>Edit student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" action="View">
+            <div>
+                <label for="" class="form-label"></label>
+                <input type="number" class="form-control" asp-for="id" readonly />
+            </div>
+            <div>
+                <label for="" class="form-label"></label>
+                <input type="text" class="form-control" asp-for="studentname" />
+            </div>
+             <div>
+                <label for="" class="form-label"></label>
+                <input type="text" class="form-control" asp-for="studentphone" />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-danger" asp-action="Delete" asp-controller="student">Delete</button>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index"></a>Back to List</a>
+</div>
