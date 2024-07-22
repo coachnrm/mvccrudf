@@ -35,7 +35,19 @@ namespace mvccrudf.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("skills");
+                    b.ToTable("skill");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            skillname = "php"
+                        },
+                        new
+                        {
+                            id = 2,
+                            skillname = "python"
+                        });
                 });
 
             modelBuilder.Entity("mvccrudf.Models.student", b =>
@@ -61,7 +73,7 @@ namespace mvccrudf.Migrations
 
                     b.HasIndex("skillid");
 
-                    b.ToTable("students");
+                    b.ToTable("student");
                 });
 
             modelBuilder.Entity("mvccrudf.Models.student", b =>

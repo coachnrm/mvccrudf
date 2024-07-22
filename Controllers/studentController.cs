@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using mvccrudf.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace mvccrudf.Controllers
 {
@@ -16,6 +17,7 @@ namespace mvccrudf.Controllers
             var fetch = my_context.students.Include(x=>x.Skill).ToList();
             return View(fetch);
         }
+
         public IActionResult addskill()
         {
             return View();
@@ -49,6 +51,8 @@ namespace mvccrudf.Controllers
         [HttpGet]
         public async Task<IActionResult> View(int id)
         {
+            List<skill> skills = my_context.skills.ToList();
+            ViewBag.skills = new SelectList(skills,"id","skillname");
             var y = await my_context.students.FirstOrDefaultAsync(x => x.id == id);
 
             if (y != null)
@@ -57,7 +61,8 @@ namespace mvccrudf.Controllers
                 {
                     id = y.id,
                     studentname = y.studentname,
-                    studentphone = y.studentphone
+                    studentphone = y.studentphone,
+                    skillid = y.skillid
                 };
 
                 return await Task.Run(() => View("View", viewModel));
@@ -75,6 +80,7 @@ namespace mvccrudf.Controllers
             {
                 z.studentname = model.studentname;
                 z.studentphone = model.studentphone;
+                z.skillid = model.skillid;
 
                 await my_context.SaveChangesAsync();
             }

@@ -1,6 +1,7 @@
 @model mvccrudf.Models.updatestudentviewmodel
 
 @{
+    ViewBag.skillname = "student Page";
 }
 
 <h4>Edit student</h4>
@@ -19,6 +20,10 @@
              <div>
                 <label for="" class="form-label"></label>
                 <input type="text" class="form-control" asp-for="studentphone" />
+            </div>
+            <div>
+                <label for="" class="form-label"></label>
+                @Html.DropDownListFor(x=>x.skillid, ViewBag.skills as SelectList, "Select Skill", new{ @class = "form-control" })
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="submit" class="btn btn-danger" asp-action="Delete" asp-controller="student">Delete</button>

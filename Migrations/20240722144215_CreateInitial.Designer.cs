@@ -11,8 +11,8 @@ using mvccrudf.Models;
 namespace mvccrudf.Migrations
 {
     [DbContext(typeof(mycontext))]
-    [Migration("20240721135717_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240722144215_CreateInitial")]
+    partial class CreateInitial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,7 +38,19 @@ namespace mvccrudf.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("skills");
+                    b.ToTable("skill");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            skillname = "php"
+                        },
+                        new
+                        {
+                            id = 2,
+                            skillname = "python"
+                        });
                 });
 
             modelBuilder.Entity("mvccrudf.Models.student", b =>
@@ -64,7 +76,7 @@ namespace mvccrudf.Migrations
 
                     b.HasIndex("skillid");
 
-                    b.ToTable("students");
+                    b.ToTable("student");
                 });
 
             modelBuilder.Entity("mvccrudf.Models.student", b =>

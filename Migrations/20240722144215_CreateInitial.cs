@@ -2,16 +2,18 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace mvccrudf.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class CreateInitial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "skills",
+                name: "skill",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -20,11 +22,11 @@ namespace mvccrudf.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_skills", x => x.id);
+                    table.PrimaryKey("PK_skill", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "students",
+                name: "student",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -35,18 +37,27 @@ namespace mvccrudf.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_students", x => x.id);
+                    table.PrimaryKey("PK_student", x => x.id);
                     table.ForeignKey(
-                        name: "FK_students_skills_skillid",
+                        name: "FK_student_skill_skillid",
                         column: x => x.skillid,
-                        principalTable: "skills",
+                        principalTable: "skill",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "skill",
+                columns: new[] { "id", "skillname" },
+                values: new object[,]
+                {
+                    { 1, "php" },
+                    { 2, "python" }
+                });
+
             migrationBuilder.CreateIndex(
-                name: "IX_students_skillid",
-                table: "students",
+                name: "IX_student_skillid",
+                table: "student",
                 column: "skillid");
         }
 
@@ -54,10 +65,10 @@ namespace mvccrudf.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "students");
+                name: "student");
 
             migrationBuilder.DropTable(
-                name: "skills");
+                name: "skill");
         }
     }
 }

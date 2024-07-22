@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace mvccrudf.Models
 {
+    [Table("student")]
     public class student
     {
         [Key]
