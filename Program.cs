@@ -28,4 +28,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=student}/{action=Index}/{id?}");
 
+app.Urls.Add("http://*:80");
 app.Run();

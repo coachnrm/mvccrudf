@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("mvccrudf")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79aef8c3b89a84c9779a416e7d1bbfbfa006b6d7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1820e39b50d3f04d5b165c86e056cc1405316262")]
 [assembly: System.Reflection.AssemblyProductAttribute("mvccrudf")]
 [assembly: System.Reflection.AssemblyTitleAttribute("mvccrudf")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

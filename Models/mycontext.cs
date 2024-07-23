@@ -9,6 +9,7 @@ namespace mvccrudf.Models
 
         }
         public DbSet<skill> skills {get; set;}
+        public DbSet<status> statuses {get; set;}
         public DbSet<student> students {get; set;}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,6 +23,18 @@ namespace mvccrudf.Models
                 {
                     id = 2,
                     skillname = "python"
+                }
+            );
+            modelBuilder.Entity<status>().HasData(
+                new status
+                {
+                    id = 1,
+                    statusname = "wait for transfer"
+                },
+                new status
+                {
+                    id = 2,
+                    statusname = "delivery"
                 }
             );
         }

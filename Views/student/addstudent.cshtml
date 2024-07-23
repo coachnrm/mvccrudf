@@ -33,6 +33,16 @@
                 </select>
             </div>
             <div class="form-group">
+                <label asp-for="statusid" class="control-label"></label>
+                <select asp-for="statusid" class="form-control" asp-items="ViewBag.statusid">
+                    <option disabled selected>Select status</option>
+                    @foreach(var i in ViewBag.getstatus)
+                    {
+                        <option value="@i.id">@i.statusname</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

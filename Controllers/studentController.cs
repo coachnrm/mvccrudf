@@ -14,7 +14,7 @@ namespace mvccrudf.Controllers
         }
         public IActionResult Index()
         {
-            var fetch = my_context.students.Include(x=>x.Skill).ToList();
+            var fetch = my_context.students.Include(x=>x.Skill).Include(x=>x.Status).ToList();
             return View(fetch);
         }
 
@@ -35,6 +35,7 @@ namespace mvccrudf.Controllers
         public IActionResult addstudent()
         {
             ViewBag.getskill = my_context.skills.ToList();
+            ViewBag.getstatus = my_context.statuses.ToList();
             return View();
         }
 
@@ -52,7 +53,9 @@ namespace mvccrudf.Controllers
         public async Task<IActionResult> View(int id)
         {
             List<skill> skills = my_context.skills.ToList();
+            List<status> statuses = my_context.statuses.ToList();
             ViewBag.skills = new SelectList(skills,"id","skillname");
+            ViewBag.statuses = new SelectList(statuses,"id","statusname");
             var y = await my_context.students.FirstOrDefaultAsync(x => x.id == id);
 
             if (y != null)
@@ -62,7 +65,8 @@ namespace mvccrudf.Controllers
                     id = y.id,
                     studentname = y.studentname,
                     studentphone = y.studentphone,
-                    skillid = y.skillid
+                    skillid = y.skillid,
+                    statusid = y.statusid
                 };
 
                 return await Task.Run(() => View("View", viewModel));
@@ -81,6 +85,7 @@ namespace mvccrudf.Controllers
                 z.studentname = model.studentname;
                 z.studentphone = model.studentphone;
                 z.skillid = model.skillid;
+                z.statusid = model.statusid;
 
                 await my_context.SaveChangesAsync();
             }
