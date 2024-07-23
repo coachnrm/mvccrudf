@@ -2,6 +2,7 @@
 
 @{
     ViewBag.skillname = "student Page";
+    ViewBag.statusname = "status Page";
 }
 
 <h4>Edit student</h4>
@@ -24,6 +25,10 @@
             <div>
                 <label for="" class="form-label"></label>
                 @Html.DropDownListFor(x=>x.skillid, ViewBag.skills as SelectList, "Select Skill", new{ @class = "form-control" })
+            </div>
+            <div>
+                <label for="" class="form-label"></label>
+                @Html.DropDownListFor(x=>x.statusid, ViewBag.statuses as SelectList, "Select Status", new{ @class = "form-control" })
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="submit" class="btn btn-danger" asp-action="Delete" asp-controller="student">Delete</button>

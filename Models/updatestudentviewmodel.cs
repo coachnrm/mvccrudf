@@ -7,5 +7,7 @@ namespace mvccrudf.Models
         public String studentphone {get; set;}
         public int skillid {get; set;}
         public virtual skill Skill {get; set;}
+        public int statusid {get; set;}
+        public virtual status Status {get; set;}
     }
 }

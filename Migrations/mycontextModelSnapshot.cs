@@ -50,6 +50,35 @@ namespace mvccrudf.Migrations
                         });
                 });
 
+            modelBuilder.Entity("mvccrudf.Models.status", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("statusname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("status");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            statusname = "wait for transfer"
+                        },
+                        new
+                        {
+                            id = 2,
+                            statusname = "delivery"
+                        });
+                });
+
             modelBuilder.Entity("mvccrudf.Models.student", b =>
                 {
                     b.Property<int>("id")
@@ -59,6 +88,9 @@ namespace mvccrudf.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<int>("skillid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("statusid")
                         .HasColumnType("int");
 
                     b.Property<string>("studentname")
@@ -73,6 +105,8 @@ namespace mvccrudf.Migrations
 
                     b.HasIndex("skillid");
 
+                    b.HasIndex("statusid");
+
                     b.ToTable("student");
                 });
 
@@ -84,7 +118,15 @@ namespace mvccrudf.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("mvccrudf.Models.status", "Status")
+                        .WithMany()
+                        .HasForeignKey("statusid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Skill");
+
+                    b.Navigation("Status");
                 });
 #pragma warning restore 612, 618
         }

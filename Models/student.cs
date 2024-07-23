@@ -13,5 +13,8 @@ namespace mvccrudf.Models
         public int skillid {get; set;}
         [ForeignKey("skillid")]
         public virtual skill Skill {get; set;}
+        public int statusid {get; set;}
+        [ForeignKey("statusid")]
+        public virtual status Status {get; set;}
     }
 }
